@@ -45,9 +45,9 @@
 #
 # https://www.gnu.org/software/make/manual/html_node/Using-Variables.html
 
-APP=app
+APP=demo
 NAME="Alex Clark"
-PROJECT=project
+PROJECT=mfri
 TMP:=$(shell echo `tmp`)
 UNAME:=$(shell uname)
 REMOTE=remotehost
