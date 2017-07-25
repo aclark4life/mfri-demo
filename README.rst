@@ -1,0 +1,5 @@
+MFRI Demo
+=========
+
+- Python 3
+- Django 1.11
