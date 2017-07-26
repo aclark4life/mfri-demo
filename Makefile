@@ -45,9 +45,9 @@
 #
 # https://www.gnu.org/software/make/manual/html_node/Using-Variables.html
 
-APP=demo
+APP=app
 NAME="Alex Clark"
-PROJECT=mfri
+PROJECT=project
 TMP:=$(shell echo `tmp`)
 UNAME:=$(shell uname)
 REMOTE=remotehost
@@ -203,6 +203,11 @@ heroku-web-on:
 heroku-web-off:
 	heroku ps:scale web=0
 
+# Makefile
+make:
+	git add Makefile
+	@$(MAKE) git-commit-auto-push
+
 # Misc
 
 pdf:
@@ -261,6 +266,8 @@ package-test:
 	bin/python setup.py test
 python-virtualenv:
 	virtualenv .
+python-virtualenv-3:
+	virtualenv --python=python3 .
 python-yapf:
 	-yapf -i *.py
 	-yapf -i $(PROJECT)/*.py
@@ -291,6 +298,11 @@ package-release:
 package-release-test:
 	bin/python setup.py sdist --format=gztar,zip upload -r test
 
+# Redhat
+redhat-update:
+	sudo yum update
+	sudo yum upgrade -y
+
 # Review
 review:
 ifeq ($(UNAME), Darwin)
@@ -316,6 +328,11 @@ sphinx-serve:
 	pushd $(PROJECT)/_build/html
 	bin/python -m SimpleHTTPServer
 	popd
+
+# Ubuntu
+ubuntu-update:
+	sudo aptitude update
+	sudo aptitude upgrade -y
 
 # Vagrant
 vagrant: vagrant-clean vagrant-init vagrant-up  # Chain
