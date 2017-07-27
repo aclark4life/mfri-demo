@@ -34,8 +34,8 @@ settings.py
       # ...
     ]
 
-mfri.wsgi
-~~~~~~~~~
+wsgi.py
+~~~~~~~
 
 ::
 
