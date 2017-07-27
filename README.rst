@@ -18,18 +18,24 @@ WhiteNoise
 
 (Via http://whitenoise.evans.io/en/stable/)
 
+settings.py
+~~~~~~~~~~~
+
 ::
 
+    # Whitenoise
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
     MIDDLEWARE_CLASSES = [
       # 'django.middleware.security.SecurityMiddleware',
       'whitenoise.middleware.WhiteNoiseMiddleware',
       # ...
     ]
 
-
-::
-
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+mfri.wsgi
+~~~~~~~~~
 
 ::
 
