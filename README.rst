@@ -1,6 +1,7 @@
 MFRI Demo
 =========
 
+- Bootstrap 4
 - Python 3
 - Django 1.11
 - Wagtail 1.11
