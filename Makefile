@@ -361,7 +361,8 @@ PROJECT=mfri
 mfri-demo-remote-update:
 	@$(MAKE) git-commit-auto-push
 	@$(MAKE) mfri-demo-remote-git-pull
-	@$(MAKE) mfri-demo-remote-system-gunicorn-restart
+	@$(MAKE) mfri-demo-remote-pip-install
+	# @$(MAKE) mfri-demo-remote-system-gunicorn-restart
 mfri-demo-remote-django-static:
 	ssh db "cd /srv/mfri-demo; bin/python3 manage.py collectstatic --noinput"
 mfri-demo-remote-git-pull:
