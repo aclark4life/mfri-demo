@@ -353,3 +353,33 @@ vagrant-update:
 # Requires npm i -g create-webpack-config
 webpack-init:
 	webpack-config
+
+# mfri-demo
+APP=demo
+PROJECT=mfri
+.DEFAULT_GOAL=mfri-demo-remote-update
+mfri-demo-remote-update:
+	@$(MAKE) git-commit-auto-push
+	@$(MAKE) mfri-demo-remote-git-pull
+	@$(MAKE) mfri-demo-remote-system-gunicorn-restart
+mfri-demo-remote-django-static:
+	ssh db "cd /srv/mfri-demo; bin/python3 manage.py collectstatic --noinput"
+mfri-demo-remote-git-pull:
+	ssh db "cd /srv/mfri-demo; git pull"
+mfri-demo-remote-pip-install:
+	ssh db "cd /srv/mfri-demo; bin/pip3 install -r requirements.txt"
+mfri-demo-remote-system-nginx-stop:
+	ssh db "sudo systemctl stop nginx"
+mfri-demo-remote-system-nginx-start:
+	ssh db "sudo systemctl start nginx"
+mfri-demo-remote-system-nginx-restart:
+	ssh db "sudo systemctl restart nginx"
+mfri-demo-remote-system-gunicorn-restart:
+	ssh db "sudo systemctl daemon-reload"
+	ssh db "sudo systemctl restart mfri-demo"
+mfri-demo-remote-system-gunicorn-start:
+	ssh db "sudo systemctl start mfri-demo"
+mfri-demo-remote-system-gunicorn-stop:
+	ssh db "sudo systemctl stop mfri-demo.service"
+mfri-demo-remote-system-gunicorn-status:
+	ssh db "sudo systemctl status mfri-demo.service"

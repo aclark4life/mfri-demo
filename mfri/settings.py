@@ -90,12 +90,13 @@ WSGI_APPLICATION = 'mfri.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+    'default': dj_database_url.config(default=os.environ.get(
+        'DATABASE_URL', 'mysql://%s:%s@%s:%s/%s' %
+        (os.environ.get('DB_USER', 'root'), os.environ.get('DB_PASS', ''),
+         os.environ.get('DB_HOST', '127.0.0.1'),
+         os.environ.get('DB_PORT', '3306'),
+         os.environ.get('DB_NAME', 'mfri'))))
+}   
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
