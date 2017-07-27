@@ -17,6 +17,9 @@ from django.conf.urls import include
 from django.conf.urls import url
 from django.contrib import admin
 from mfri.demo import views
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
