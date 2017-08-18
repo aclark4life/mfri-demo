@@ -13,8 +13,7 @@
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
+      <!-- http://docs.wagtail.io/en/v1.11.1/getting_started/tutorial.html#extend-the-homepage-model -->
       {% block body_class %}template-homepage{% endblock %}
-      {% block content %}
-        {{ page.body|richtext }}
-      {% endblock %}
+      {{ page.body|richtext }}
 {% endblock %}
